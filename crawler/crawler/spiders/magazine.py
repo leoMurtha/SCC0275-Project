@@ -1,7 +1,7 @@
 import scrapy
 from crawler.items import Product
 
-class QuotesSpider(scrapy.Spider):
+class MagazineSpider(scrapy.Spider):
     name = "magazine"
 
     def start_requests(self):
@@ -40,4 +40,5 @@ class QuotesSpider(scrapy.Spider):
         # Use Product Item
         # Parse the product title, category and description
         # Product()
+        product = Product()
         pass
