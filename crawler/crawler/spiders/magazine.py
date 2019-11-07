@@ -9,7 +9,8 @@ class MagazineSpider(scrapy.Spider):
         urls = [
             'https://www.magazineluiza.com.br/notebook/informatica/s/in/note/',
             'https://www.magazineluiza.com.br/geladeira-refrigerador/eletrodomesticos/s/ed/refr/',
-            'https://www.magazineluiza.com.br/celulares-e-smartphones/l/te/'
+            'https://www.magazineluiza.com.br/celulares-e-smartphones/l/te/',
+            'https://www.magazineluiza.com.br/guarda-roupa-roupeiro/moveis/s/mo/guro/'
         ]
 
         for url in urls:
@@ -24,8 +25,7 @@ class MagazineSpider(scrapy.Spider):
         number_of_pages = int(number_of_pages.split(' ')[1])
 
         current_url = response.url
-        #for i in range(1, number_of_pages + 1):
-        for i in range(1, 2):
+        for i in range(1, number_of_pages + 1):
             yield scrapy.Request(url='%s?page=%d' % (current_url, i), callback=self.parse_page)
 
     def parse_page(self, response):
@@ -36,8 +36,7 @@ class MagazineSpider(scrapy.Spider):
 
         category = response.xpath('//ol[@data-css-rczytq=""]/li[last()]/a/text()').extract_first()
 
-        # for href in hrefs:
-        for href in hrefs[:3]:
+        for href in hrefs:
             yield scrapy.Request(url=href, callback=self.parse_product, meta={"category":category})
 
     def parse_product(self, response):
@@ -66,9 +65,10 @@ class MagazineSpider(scrapy.Spider):
     
         yield product
 
-        #filename = 'Titles'  
-        #with open(filename, 'a') as f:
-        #    f.write("Title: %s\n\tUrl: %s\n\n" % (title, response.url))
+        # filename = 'Products'  
+        # with open(filename, 'a') as f:
+        #     f.write("Url: %s\n\tTitle: %s\n\tCategory: %s\n\tDescription: %s\n" % 
+        #         (response.url, product["title"], product["category"], product["description"]))
 
         #product.category = response.xpath()
         #product.description = response.xpath()
