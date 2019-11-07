@@ -10,7 +10,13 @@ class MagazineSpider(scrapy.Spider):
             'https://www.magazineluiza.com.br/notebook/informatica/s/in/note/',
             'https://www.magazineluiza.com.br/geladeira-refrigerador/eletrodomesticos/s/ed/refr/',
             'https://www.magazineluiza.com.br/celulares-e-smartphones/l/te/',
-            'https://www.magazineluiza.com.br/guarda-roupa-roupeiro/moveis/s/mo/guro/'
+            'https://www.magazineluiza.com.br/guarda-roupa-roupeiro/moveis/s/mo/guro/',
+            'https://www.magazineluiza.com.br/fogao/eletrodomesticos/s/ed/fogo/',
+            'https://www.magazineluiza.com.br/ar-condicionado/ar-e-ventilacao/s/ar/arar/',  
+            'https://www.magazineluiza.com.br/monitores/informatica/s/in/mlcd/',
+            'https://www.magazineluiza.com.br/smart-tv/tv-e-video/s/et/elit/',
+            'https://www.magazineluiza.com.br/lava-e-seca/eletrodomesticos/s/ed/ela1/',
+            'https://www.magazineluiza.com.br/maquina-de-lavar/eletrodomesticos/s/ed/lava/'
         ]
 
         for url in urls:
@@ -64,11 +70,3 @@ class MagazineSpider(scrapy.Spider):
         product["description"] = description
     
         yield product
-
-        # filename = 'Products'  
-        # with open(filename, 'a') as f:
-        #     f.write("Url: %s\n\tTitle: %s\n\tCategory: %s\n\tDescription: %s\n" % 
-        #         (response.url, product["title"], product["category"], product["description"]))
-
-        #product.category = response.xpath()
-        #product.description = response.xpath()
