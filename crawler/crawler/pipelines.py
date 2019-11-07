@@ -8,4 +8,4 @@
 
 class ProductPipeline(object):
     def process_item(self, item, spider):
-        print(item)
+        print("ITEM:", item)
